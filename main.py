@@ -17,10 +17,14 @@ with open('bd-dec21-births-deaths-natural-increase.csv') as f:
             y2.append(int(row['Count']))
             x2.append(int(row['Period']))
 
-x = np.linspace(2000,2023, 100)
-y = (x-2010)**3+55*(x-2010)**2+45000
-fig, ax = plt.subplots()
-ax.plot(x, y, linewidth=2.0, label='(x-2010)**3+55*(x-2010)**2+45000')
+x = np.linspace(-5,5, 100)
+y = x**3+2*x**2
+ax = plt.subplot(1, 2, 1)
+ax.plot(x, y, linewidth=2.0, label='x**3+2*x**2')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.grid()
+ax = plt.subplot(1, 2, 2)
 ax.plot(x1, y1, label='Births')
 ax.plot(x2, y2, label='Deaths')
 ax.set_title('Births/Deaths')
