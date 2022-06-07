@@ -12,6 +12,11 @@ def stp_reader(file_name):
                 l = line.split()
                 l.remove("A")
                 arcs.append(l)
+            if line[0] == "E":
+                if line[1] == " ":
+                    l = line.split()
+                    l.remove("E")
+                    arcs.append(l)
     return arcs
 
 
@@ -27,13 +32,13 @@ def arcs_list_convert(list, type):
     if type == "SI":
         for a in list:
             if a[0] in ss:
-                ss[a[0]].append([a[0] + a[1], a[2]])
+                ss[a[0]].append([[a[0], a[1]], a[2]])
             else:
-                ss[a[0]] = [[a[0] + a[1], a[2]]]
+                ss[a[0]] = [[[a[0], a[1]], a[2]]]
             if a[1] in ss:
-                ss[a[1]].append([a[0] + a[1], a[2]])
+                ss[a[1]].append([[a[0], a[1]], a[2]])
             else:
-                ss[a[1]] = [[a[0] + a[1], a[2]]]
+                ss[a[1]] = [[[a[0], a[1]], a[2]]]
         return ss
 
 
