@@ -53,7 +53,11 @@ slist = arcs_list_convert(elist, "SS")
 first = input("Start Node: ")
 queue = [first]
 
+if first not in slist:
+    slist[first] = [1, []]
+else:
 
+    slist[first][0]=1
 def bfs(node):
     slist[node][0] = 2
     for n in slist[node]:
@@ -97,6 +101,7 @@ def update(idx):
     if queue != [] and idx != 0:
         ax.set_title(f'Next Node {queue[0]}')
         bfs(queue[0])
+
 
 
 ani = matplotlib.animation.FuncAnimation(fig, update, frames=len(elist)**2, interval=1000, repeat=True)
